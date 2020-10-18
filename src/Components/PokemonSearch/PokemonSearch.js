@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "./PokemonSearch.css";
 export default function PokemonSearch({ search, setSearch, setPokemonQuery }) {
   const [selectType, setSelectType] = useState("ALL");
   const [selectSeries, setSelectSeries] = useState("ALL");
@@ -52,7 +52,7 @@ export default function PokemonSearch({ search, setSearch, setPokemonQuery }) {
     "POP",
   ].sort((a, b) => a > b);
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="pokemon-search" onSubmit={handleSubmit}>
       <label htmlFor="search-box">Pokemon Search</label>
       <input id="search-box" onChange={handleChange} value={search} />
       <label htmlFor="search-type">Type</label>

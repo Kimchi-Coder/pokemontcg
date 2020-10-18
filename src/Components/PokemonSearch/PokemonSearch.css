@@ -1,0 +1,8 @@
+.pokemon-search {
+  margin: 5vh auto;
+  width: 60vw;
+}
+
+form > label {
+  padding: 0 5px;
+}
