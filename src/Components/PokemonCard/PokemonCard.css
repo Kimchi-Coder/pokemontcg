@@ -1,0 +1,5 @@
+.pokemon-card {
+  flex: 1 1 30vw;
+  margin: 5vh 20px;
+  padding: 5px;
+}

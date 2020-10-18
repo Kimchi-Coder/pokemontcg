@@ -12,12 +12,16 @@ function ErrorFallBack({ error, resetErrorBoundary }) {
     </div>
   );
 }
+const initialState = { name: "", type: "", series: "" };
 
 function App() {
   const [search, setSearch] = useState("");
-  const [pokemonQuery, setPokemonQuery] = useState("");
+  const [pokemonQuery, setPokemonQuery] = useState(initialState);
 
-  const handleReset = () => setPokemonQuery("");
+  const handleReset = () => {
+    setSearch("");
+    setPokemonQuery(initialState);
+  };
 
   return (
     <>

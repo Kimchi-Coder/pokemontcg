@@ -1,5 +1,6 @@
 import React, { useReducer, useEffect } from "react";
 import PokemonCard from "./PokemonCard";
+import "./PokemonCardWrapper.css";
 
 const asyncReducer = (state, action) => {
   switch (action.type) {
@@ -36,10 +37,10 @@ export default function PokemonCardWrapper({ pokemonQuery }) {
   const { status, pokemon, error } = state;
 
   useEffect(() => {
-    if (!pokemonQuery) return;
+    if (!pokemonQuery.name) return;
 
     dispatch({ type: "pending" });
-    fetch(`https://api.pokemontcg.io/v1/cards?name=${pokemonQuery}`)
+    fetch(`https://api.pokemontcg.io/v1/cards?name=${pokemonQuery.name}`)
       .then((result) => result.json())
       .then((data) => dispatch({ type: "resolved", payload: data }))
       .catch((err) => dispatch({ type: "rejected", error: err }));
@@ -58,6 +59,8 @@ export default function PokemonCardWrapper({ pokemonQuery }) {
             hp={card.hp}
             attacks={card.attacks}
             imgURL={card.imageUrl}
+            key={card.id}
+            id={card.id}
           />
         ))}
       </div>
