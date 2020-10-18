@@ -1,4 +1,5 @@
-import React, { useReducer, useEffect, useRef } from "react";
+import React, { useReducer, useEffect } from "react";
+import { usePokemonCache } from "../../Hooks/usePokemonCache";
 import PokemonCard from "./PokemonCard";
 import "./PokemonCardWrapper.css";
 
@@ -33,26 +34,30 @@ export default function PokemonCardWrapper({ pokemonQuery }) {
     pokemon: null,
     error: null,
   });
+  const [cache, cacheDispatch] = usePokemonCache();
 
   const { status, pokemon, error } = state;
-  let cache = useRef({});
 
   useEffect(() => {
     if (!pokemonQuery.name) return;
 
     dispatch({ type: "pending" });
-    if (cache.current[pokemonQuery.name]) {
-      dispatch({ type: "resolved", payload: cache.current[pokemonQuery.name] });
+    if (cache[pokemonQuery.name]) {
+      dispatch({ type: "resolved", payload: cache[pokemonQuery.name] });
     } else {
       fetch(`https://api.pokemontcg.io/v1/cards?name=${pokemonQuery.name}`)
         .then((result) => result.json())
         .then((data) => {
+          cacheDispatch({
+            type: "ADD_POKEMON",
+            name: pokemonQuery.name,
+            payload: data,
+          });
           dispatch({ type: "resolved", payload: data });
-          cache.current[pokemonQuery.name] = data;
         })
         .catch((err) => dispatch({ type: "rejected", error: err }));
     }
-  }, [pokemonQuery]);
+  }, [pokemonQuery, cache]);
 
   if (status === "idle") return "Please search a pokemon";
   if (status === "pending") return "Loading...";
@@ -69,6 +74,7 @@ export default function PokemonCardWrapper({ pokemonQuery }) {
             imgURL={card.imageUrl}
             key={card.id}
             id={card.id}
+            pokedexNum={card.nationalPokedexNumber}
           />
         ))}
       </div>

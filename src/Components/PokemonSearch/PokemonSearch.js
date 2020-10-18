@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import "./PokemonSearch.css";
-export default function PokemonSearch({ search, setSearch, setPokemonQuery }) {
+
+export default function PokemonSearch({
+  search,
+  setSearch,
+  setPokemonQuery,
+  searchedPokemon,
+}) {
   const [selectType, setSelectType] = useState("ALL");
   const [selectSeries, setSelectSeries] = useState("ALL");
 
@@ -52,34 +58,37 @@ export default function PokemonSearch({ search, setSearch, setPokemonQuery }) {
     "POP",
   ].sort((a, b) => a > b);
   return (
-    <form className="pokemon-search" onSubmit={handleSubmit}>
-      <label htmlFor="search-box">Pokemon Search</label>
-      <input id="search-box" onChange={handleChange} value={search} />
-      <label htmlFor="search-type">Type</label>
-      <select
-        name="search-type"
-        id="search-type"
-        onChange={(e) => setSelectType(e.target.value)}
-      >
-        {pokemonTypes.map((type) => (
-          <option key={type} value={type}>
-            {type}
-          </option>
-        ))}
-      </select>
-      <label htmlFor="search-series">Series</label>
-      <select
-        name="search-series"
-        id="search-series"
-        onChange={(e) => setSelectSeries(e.target.value)}
-      >
-        {series.map((series) => (
-          <option key={series} value={series}>
-            {series}
-          </option>
-        ))}
-      </select>
-      <button type="submit">Submit</button>
-    </form>
+    <>
+      <form className="pokemon-search" onSubmit={handleSubmit}>
+        <label htmlFor="search-box">Pokemon Search</label>
+        <input id="search-box" onChange={handleChange} value={search} />
+        <label htmlFor="search-type">Type</label>
+        <select
+          name="search-type"
+          id="search-type"
+          onChange={(e) => setSelectType(e.target.value)}
+        >
+          {pokemonTypes.map((type) => (
+            <option key={type} value={type}>
+              {type}
+            </option>
+          ))}
+        </select>
+        <label htmlFor="search-series">Series</label>
+        <select
+          name="search-series"
+          id="search-series"
+          onChange={(e) => setSelectSeries(e.target.value)}
+        >
+          {series.map((series) => (
+            <option key={series} value={series}>
+              {series}
+            </option>
+          ))}
+        </select>
+        <button type="submit">Submit</button>
+      </form>
+      {searchedPokemon}
+    </>
   );
 }
