@@ -23,3 +23,8 @@ form > label {
   color: white;
   border-color: rgb(3, 109, 110);
 }
+
+.searched-wrapper {
+  background-color: aquamarine;
+  margin-bottom: 2vh;
+}

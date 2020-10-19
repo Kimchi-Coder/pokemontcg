@@ -1,8 +1,9 @@
 .pokemon-card-wrapper {
   width: 80vw;
+  max-width: 1440px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  margin: 2.5vh 10vw;
+  margin: 0 10vw 2.5vh 10vw;
 }

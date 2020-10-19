@@ -31,7 +31,9 @@ function App() {
   };
   const handleSelect = (pokemonName) => {
     setPokemonQuery({ ...initialState, name: pokemonName });
+    setSearch(pokemonName);
   };
+
   return (
     <Router>
       <Switch>

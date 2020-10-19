@@ -36,7 +36,6 @@ export default function PokemonCardWrapper({ pokemonQuery }) {
     error: null,
   });
   const [cache, cacheDispatch] = usePokemonCache();
-
   const { status, pokemon, error } = state;
 
   useEffect(() => {
@@ -92,22 +91,29 @@ export default function PokemonCardWrapper({ pokemonQuery }) {
   if (status === "rejected") throw error;
   if (status === "resolved") {
     return (
-      <div className="pokemon-card-wrapper">
-        {filteredCards
-          ? filteredCards.map((card) => (
-              <PokemonCard
-                name={card.name}
-                types={card.types}
-                hp={card.hp}
-                attacks={card.attacks}
-                imgURL={card.imageUrl}
-                key={card.id}
-                id={card.id}
-                pokedexNum={card.nationalPokedexNumber}
-              />
-            ))
-          : null}
-      </div>
+      <>
+        {filteredCards ? (
+          <div style={{ textAlign: "center" }}>
+            Total Card: {filteredCards.length}{" "}
+          </div>
+        ) : null}
+        <div className="pokemon-card-wrapper">
+          {filteredCards
+            ? filteredCards.map((card) => (
+                <PokemonCard
+                  name={card.name}
+                  types={card.types}
+                  hp={card.hp}
+                  attacks={card.attacks}
+                  imgURL={card.imageUrl}
+                  key={card.id}
+                  id={card.id}
+                  pokedexNum={card.nationalPokedexNumber}
+                />
+              ))
+            : null}
+        </div>
+      </>
     );
   }
 }

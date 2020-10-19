@@ -21,6 +21,7 @@ export default function PokemonSearch({
       type: selectType === "ALL" ? "" : selectType,
       series: selectSeries === "ALL" ? "" : selectSeries,
     });
+
     history.push("/search");
   };
 
@@ -103,7 +104,7 @@ export default function PokemonSearch({
         </select>
         <button type="submit">Submit</button>
       </form>
-      {searchedPokemon}
+      <div className="searched-wrapper">{searchedPokemon}</div>
     </>
   );
 }

@@ -15,30 +15,33 @@ export default function PokemonSearchLanding({
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    setPokemonQuery({ name: search, type: selectType, series: selectSeries });
+    setPokemonQuery({
+      name: search,
+      type: selectType === "ALL" ? "" : selectType,
+      series: selectSeries === "ALL" ? "" : selectSeries,
+    });
     history.push("/search");
   };
-
   const pokemonTypes = [
     "ALL",
-    "normal",
-    "fighting",
-    "fire",
-    "flying",
-    "poison",
-    "ground",
-    "rock",
-    "bug",
-    "ghost",
-    "steel",
-    "water",
-    "grass",
-    "electric",
-    "psychic",
-    "ice",
-    "dragon",
-    "dark",
-    "fairy",
+    "Normal",
+    "Fighting",
+    "Fire",
+    "Flying",
+    "Poison",
+    "Ground",
+    "Rock",
+    "Bug",
+    "Ghost",
+    "Steel",
+    "Water",
+    "Grass",
+    "Electric",
+    "Psychic",
+    "Ice",
+    "Dragon",
+    "Dark",
+    "Fairy",
   ].sort((a, b) => a > b);
 
   const series = [
