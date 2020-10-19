@@ -25,7 +25,7 @@ export function usePokemonCache() {
 
 let initialLocalCache = JSON.parse(window.localStorage.getItem("cache"));
 
-if (initialLocalCache === undefined || initialLocalCache === null) {
+if (!initialLocalCache) {
   window.localStorage.removeItem("cache");
   initialLocalCache = {};
 }

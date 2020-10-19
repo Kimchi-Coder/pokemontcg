@@ -48,12 +48,18 @@ export default function PokemonCardWrapper({ pokemonQuery }) {
       fetch(`https://api.pokemontcg.io/v1/cards?name=${pokemonQuery.name}`)
         .then((result) => result.json())
         .then((data) => {
-          cacheDispatch({
-            type: "ADD_POKEMON",
-            name: pokemonQuery.name,
-            payload: data,
-          });
-          dispatch({ type: "resolved", payload: data });
+          if (data.cards.length > 0) {
+            cacheDispatch({
+              type: "ADD_POKEMON",
+              name: pokemonQuery.name,
+              payload: data,
+            });
+            dispatch({ type: "resolved", payload: data });
+          } else
+            dispatch({
+              type: "rejected",
+              error: `There is no pokemon named: ${pokemonQuery.name}`,
+            });
         })
         .catch((err) => dispatch({ type: "rejected", error: err }));
     }
@@ -88,7 +94,12 @@ export default function PokemonCardWrapper({ pokemonQuery }) {
   if (status === "idle")
     return <div style={{ textAlign: "center" }}>Please search a pokemon</div>;
   if (status === "pending") return <Loading />;
-  if (status === "rejected") throw error;
+  if (status === "rejected")
+    return (
+      <div role="alert" style={{ textAlign: "center" }}>
+        {error}
+      </div>
+    );
   if (status === "resolved") {
     return (
       <>
