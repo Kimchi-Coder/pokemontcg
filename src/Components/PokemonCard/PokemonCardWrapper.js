@@ -2,6 +2,7 @@ import React, { useReducer, useEffect } from "react";
 import { usePokemonCache } from "../../Hooks/usePokemonCache";
 import PokemonCard from "./PokemonCard";
 import "./PokemonCardWrapper.css";
+import Loading from "../Loading/Loading";
 
 const asyncReducer = (state, action) => {
   switch (action.type) {
@@ -61,7 +62,7 @@ export default function PokemonCardWrapper({ pokemonQuery }) {
 
   if (status === "idle")
     return <div style={{ textAlign: "center" }}>Please search a pokemon</div>;
-  if (status === "pending") return "Loading...";
+  if (status === "pending") return <Loading />;
   if (status === "rejected") throw error;
   if (status === "resolved") {
     return (
