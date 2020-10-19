@@ -7,20 +7,22 @@ export default function SearchedPokemon({ onSelect }) {
 
   return (
     <div className="searched-pokemon-header">
-      Previous Searches:
-      <ul className="searched-pokemon-wrapper">
+      <div className="searched-pokemon-wrapper">
         {Object.keys(cache).map((name) => (
-          <li key={name}>
-            <button
-              className="searched-pokemon"
-              style={{ width: "100%" }}
-              onClick={() => onSelect(name)}
-            >
-              {name}
-            </button>
-          </li>
+          <button
+            style={{
+              minWidth: `${name.length}ch`,
+              maxWidth: `${name.length + 3}ch`,
+              margin: "5px",
+            }}
+            key={name}
+            className="searched-pokemon"
+            onClick={() => onSelect(name)}
+          >
+            {name}
+          </button>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

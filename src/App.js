@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect } from "react";
+import React, { useState } from "react";
 import PokemonCardWrapper from "./Components/PokemonCard/PokemonCardWrapper";
 import PokemonSearch from "./Components/PokemonSearch/PokemonSearch";
 import { ErrorBoundary } from "react-error-boundary";
@@ -31,7 +31,6 @@ function App() {
   };
   return (
     <>
-      <div className="App"> Pokemon TCG</div>
       <PokemonCacheProvider>
         <PokemonSearch
           search={search}

@@ -60,15 +60,16 @@ export default function PokemonSearch({
   return (
     <>
       <form className="pokemon-search" onSubmit={handleSubmit}>
-        <label htmlFor="search-box">Pokemon Search</label>
         <input
           id="search-box"
           onChange={handleChange}
           value={search}
-          placeholder="pikachu"
+          placeholder="Search for a pokemon!"
+          autoFocus
         />
         <label htmlFor="search-type">Type</label>
         <select
+          style={{ width: "12ch" }}
           name="search-type"
           id="search-type"
           onChange={(e) => setSelectType(e.target.value)}
@@ -81,6 +82,7 @@ export default function PokemonSearch({
         </select>
         <label htmlFor="search-series">Series</label>
         <select
+          style={{ width: "25ch" }}
           name="search-series"
           id="search-series"
           onChange={(e) => setSelectSeries(e.target.value)}

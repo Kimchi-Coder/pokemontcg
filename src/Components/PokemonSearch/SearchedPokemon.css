@@ -10,12 +10,12 @@
   align-items: center;
 }
 
-.searched-pokemon-wrapper > li {
-  flex: 1 1 8vw;
+/* button {
+  flex: 1 1 5vw;
+  min-width: 11ch;
   max-width: 10vw;
   margin: 5px;
-}
-
+} */
 .searched-pokemon {
   font-size: 1rem;
   font-family: inherit;
