@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./PokemonSearch.css";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
+import { ReactComponent as PokeballSVG } from "../../assets/pokeball.svg";
 
 export default function PokemonSearch({
   search,
@@ -24,7 +25,6 @@ export default function PokemonSearch({
 
     history.push("/search");
   };
-
   const pokemonTypes = [
     "ALL",
     "Normal",
@@ -69,6 +69,9 @@ export default function PokemonSearch({
   return (
     <>
       <form className="pokemon-search" onSubmit={handleSubmit}>
+        <Link to="/">
+          <PokeballSVG fill="white" height="32px" width="32px" />
+        </Link>
         <input
           id="search-box"
           onChange={handleChange}

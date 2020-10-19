@@ -18,6 +18,7 @@ form > label {
   width: 15vw;
   height: 2.5rem;
   border-radius: 2px;
+  margin-left: 10px;
   padding: 12px 14px 12px 36px;
   background-color: rgb(3, 109, 110);
   color: white;
