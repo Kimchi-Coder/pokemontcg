@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer, useEffect, useState } from "react";
 import { usePokemonCache } from "../../Hooks/usePokemonCache";
 import PokemonCard from "./PokemonCard";
 import "./PokemonCardWrapper.css";
@@ -64,6 +64,28 @@ export default function PokemonCardWrapper({ pokemonQuery }) {
     window.localStorage.setItem("cache", JSON.stringify(cache));
   }, [cache, cacheDispatch]);
 
+  const [filteredCards, setFilteredCards] = useState(pokemon);
+
+  useEffect(() => {
+    if (!pokemon) return;
+    const filterCards = (query) => {
+      const { type, series } = query;
+      if (type & series) {
+        return pokemon.cards.filter(
+          (card) => card.types.includes(type) & (card.series === series)
+        );
+      } else if (type) {
+        return pokemon.cards.filter((card) => card.types.includes(type));
+      } else if (series) {
+        return pokemon.cards.filter((card) => card.series === series);
+      } else {
+        return pokemon.cards;
+      }
+    };
+    console.log(pokemonQuery.type + " " + pokemonQuery.series);
+    setFilteredCards(filterCards(pokemonQuery));
+  }, [pokemonQuery, pokemon]);
+
   if (status === "idle")
     return <div style={{ textAlign: "center" }}>Please search a pokemon</div>;
   if (status === "pending") return <Loading />;
@@ -71,18 +93,20 @@ export default function PokemonCardWrapper({ pokemonQuery }) {
   if (status === "resolved") {
     return (
       <div className="pokemon-card-wrapper">
-        {pokemon.cards.map((card) => (
-          <PokemonCard
-            name={card.name}
-            types={card.types}
-            hp={card.hp}
-            attacks={card.attacks}
-            imgURL={card.imageUrl}
-            key={card.id}
-            id={card.id}
-            pokedexNum={card.nationalPokedexNumber}
-          />
-        ))}
+        {filteredCards
+          ? filteredCards.map((card) => (
+              <PokemonCard
+                name={card.name}
+                types={card.types}
+                hp={card.hp}
+                attacks={card.attacks}
+                imgURL={card.imageUrl}
+                key={card.id}
+                id={card.id}
+                pokedexNum={card.nationalPokedexNumber}
+              />
+            ))
+          : null}
       </div>
     );
   }
