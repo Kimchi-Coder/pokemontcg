@@ -4,8 +4,8 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 3rem;
   margin: 0 auto;
+  padding: 5px 0;
   background-color: rgb(0, 150, 152);
   color: white;
 }
@@ -18,13 +18,35 @@ form > label {
   width: 15vw;
   height: 2.5rem;
   border-radius: 2px;
-  padding: 12px 14px;
+  padding: 12px 14px 12px 36px;
   background-color: rgb(3, 109, 110);
   color: white;
   border-color: rgb(3, 109, 110);
+  background-image: url("../../assets/search.svg");
+  background-size: 24px 24px;
+  background-position: 6px center;
+  background-repeat: no-repeat;
 }
 
 .searched-wrapper {
   background-color: aquamarine;
   margin-bottom: 2vh;
+}
+
+.submit-btn {
+  height: 2rem;
+  width: 7vw;
+  min-width: 8ch;
+  margin-left: 15px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+.submit-btn:active {
+  background-color: whitesmoke;
+}
+
+.submit-btn:hover {
+  pointer-events: stroke;
 }

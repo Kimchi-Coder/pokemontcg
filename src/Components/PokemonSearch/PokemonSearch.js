@@ -102,7 +102,9 @@ export default function PokemonSearch({
             </option>
           ))}
         </select>
-        <button type="submit">Submit</button>
+        <button className="submit-btn" type="submit">
+          Submit
+        </button>
       </form>
       <div className="searched-wrapper">{searchedPokemon}</div>
     </>

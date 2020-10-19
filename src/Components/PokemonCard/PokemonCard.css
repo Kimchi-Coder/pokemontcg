@@ -13,3 +13,15 @@ img {
   height: auto;
   align-self: center;
 }
+
+/* CSS hover-zoom effect way too slow and janky */
+.pokemon-card-wrapper:active img {
+  filter: blur(20px);
+  opacity: 0.5;
+}
+
+.pokemon-card-wrapper img:active {
+  filter: blur(0px);
+  transform: scale(1.5);
+  opacity: 1;
+}

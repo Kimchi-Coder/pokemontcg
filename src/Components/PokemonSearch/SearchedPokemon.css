@@ -6,7 +6,7 @@
   width: 80vw;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 
@@ -19,4 +19,9 @@
   padding: 8px 10px;
   color: rgb(255, 255, 255);
   border-radius: 3px;
+}
+
+.searched-pokemon:active {
+  background-color: #c7cef7;
+  border: 1px solid #2754d1;
 }
