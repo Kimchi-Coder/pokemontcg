@@ -75,19 +75,23 @@ export default function PokemonCardWrapper({ pokemonQuery }) {
     if (!pokemon) return;
     const filterCards = (query) => {
       const { type, series } = query;
+
+      const cardsWithType = pokemon.cards.filter((card) =>
+        card.hasOwnProperty("types")
+      );
+
       if (type & series) {
-        return pokemon.cards.filter(
+        return cardsWithType.filter(
           (card) => card.types.includes(type) & (card.series === series)
         );
       } else if (type) {
-        return pokemon.cards.filter((card) => card.types.includes(type));
+        return cardsWithType.filter((card) => card.types.includes(type));
       } else if (series) {
-        return pokemon.cards.filter((card) => card.series === series);
+        return cardsWithType.filter((card) => card.series === series);
       } else {
         return pokemon.cards;
       }
     };
-    console.log(pokemonQuery.type + " " + pokemonQuery.series);
     setFilteredCards(filterCards(pokemonQuery));
   }, [pokemonQuery, pokemon]);
 
@@ -105,7 +109,7 @@ export default function PokemonCardWrapper({ pokemonQuery }) {
       <>
         {filteredCards ? (
           <div style={{ textAlign: "center" }}>
-            Total Card: {filteredCards.length}{" "}
+            Total Cards: {filteredCards.length}{" "}
           </div>
         ) : null}
         <div className="pokemon-card-wrapper">
