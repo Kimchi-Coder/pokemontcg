@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import "./PokemonSearch.css";
+import "./PokemonSearchLanding.css";
 import { useHistory } from "react-router-dom";
 
-export default function PokemonSearch({
+export default function PokemonSearchLanding({
   search,
   setSearch,
   setPokemonQuery,
-  searchedPokemon,
 }) {
   const [selectType, setSelectType] = useState("ALL");
   const [selectSeries, setSelectSeries] = useState("ALL");
@@ -63,7 +62,7 @@ export default function PokemonSearch({
   const history = useHistory();
   return (
     <>
-      <form className="pokemon-search" onSubmit={handleSubmit}>
+      <form className="pokemon-search-landing" onSubmit={handleSubmit}>
         <input
           id="search-box"
           onChange={handleChange}
@@ -99,7 +98,6 @@ export default function PokemonSearch({
         </select>
         <button type="submit">Submit</button>
       </form>
-      {searchedPokemon}
     </>
   );
 }

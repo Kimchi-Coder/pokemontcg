@@ -1,0 +1,9 @@
+.landing-wrapper {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(rgb(0, 150, 152), rgb(255, 241, 50));
+}

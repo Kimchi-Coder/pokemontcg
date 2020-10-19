@@ -58,7 +58,11 @@ export default function PokemonCardWrapper({ pokemonQuery }) {
         })
         .catch((err) => dispatch({ type: "rejected", error: err }));
     }
-  }, [pokemonQuery, cache]);
+  }, [pokemonQuery, cache, cacheDispatch]);
+
+  useEffect(() => {
+    window.localStorage.setItem("cache", JSON.stringify(cache));
+  }, [cache, cacheDispatch]);
 
   if (status === "idle")
     return <div style={{ textAlign: "center" }}>Please search a pokemon</div>;

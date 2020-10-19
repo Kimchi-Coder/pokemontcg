@@ -1,10 +1,12 @@
 .pokemon-card {
   display: flex;
   flex-direction: column;
-  flex: 1 1 30vw;
   margin: 2.5vh 20px;
-  padding: 5px;
+  justify-content: center;
   align-self: flex-start;
+  box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.3);
+  background: transparent;
+  border-radius: 10px;
 }
 
 img {

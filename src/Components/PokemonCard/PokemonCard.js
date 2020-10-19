@@ -1,51 +1,27 @@
 import React from "react";
 import "./PokemonCard.css";
+import PokemonCardInfo from "./PokemonCardInfo";
 
 export default function PokemonCard({
+  imgURL,
   name,
   types,
   hp,
   attacks,
-  imgURL,
   id,
   pokedexNum,
 }) {
   return (
     <div className="pokemon-card" key={id}>
       <img className="pokemon-img" src={imgURL} alt={name}></img>
-      <div className="pokemon-name">
-        <strong>Name: </strong>
-        {name}
-        <pre>Pokedex #: {pokedexNum}</pre>
-      </div>
-      <div className="pokemon-hp">
-        <strong>HP: </strong>
-        {hp}
-      </div>
-      <ul>
-        <strong>Types: </strong>
-        {types ? types.map((type) => <li key={id + type}>{type}</li>) : "none"}
-      </ul>
-      <ul className="pokemon-attacks">
-        {attacks
-          ? attacks.map((attack) => (
-              <li key={id + "" + name}>
-                <p>
-                  <strong>Attack Name:</strong> {attack.name}
-                </p>{" "}
-                <p>
-                  <strong>Text: </strong>
-                  {attack.text}
-                </p>{" "}
-                {attack.damage ? (
-                  <p>
-                    <strong>Dmg: </strong> {attack.damage}
-                  </p>
-                ) : null}
-              </li>
-            ))
-          : null}
-      </ul>
+      {/* <PokemonCardInfo
+        name={name}
+        types={types}
+        hp={hp}
+        attacks={attacks}
+        od={id}
+        pokedexNum={pokedexNum}
+      /> */}
     </div>
   );
 }

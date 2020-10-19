@@ -23,8 +23,21 @@ export function usePokemonCache() {
   return context;
 }
 
+let initialLocalCache;
+
+if (window.localStorage.getItem("cache") === "undefined") {
+  window.localStorage.removeItem("cache");
+  initialLocalCache = {};
+} else {
+  initialLocalCache = JSON.parse(window.localStorage.getItem("cache"));
+}
+
 export function PokemonCacheProvider(props) {
-  const [cache, cacheDispatch] = useReducer(pokemonCacheReducer, {});
+  const [cache, cacheDispatch] = useReducer(
+    pokemonCacheReducer,
+    initialLocalCache
+  );
+
   const value = [cache, cacheDispatch];
   return <PokemonCacheContext.Provider value={value} {...props} />;
 }
