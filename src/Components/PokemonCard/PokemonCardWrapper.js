@@ -59,7 +59,8 @@ export default function PokemonCardWrapper({ pokemonQuery }) {
     }
   }, [pokemonQuery, cache]);
 
-  if (status === "idle") return "Please search a pokemon";
+  if (status === "idle")
+    return <div style={{ textAlign: "center" }}>Please search a pokemon</div>;
   if (status === "pending") return "Loading...";
   if (status === "rejected") throw error;
   if (status === "resolved") {

@@ -1,16 +1,21 @@
 import React from "react";
 import { usePokemonCache } from "../../Hooks/usePokemonCache";
+import "./SearchedPokemon.css";
 
 export default function SearchedPokemon({ onSelect }) {
   const [cache] = usePokemonCache();
 
   return (
-    <div>
+    <div className="searched-pokemon-header">
       Previous Searches:
-      <ul>
+      <ul className="searched-pokemon-wrapper">
         {Object.keys(cache).map((name) => (
-          <li key={name} style={{ margin: "4px auto" }}>
-            <button style={{ width: "100%" }} onClick={() => onSelect(name)}>
+          <li key={name}>
+            <button
+              className="searched-pokemon"
+              style={{ width: "100%" }}
+              onClick={() => onSelect(name)}
+            >
               {name}
             </button>
           </li>

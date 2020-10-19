@@ -61,7 +61,12 @@ export default function PokemonSearch({
     <>
       <form className="pokemon-search" onSubmit={handleSubmit}>
         <label htmlFor="search-box">Pokemon Search</label>
-        <input id="search-box" onChange={handleChange} value={search} />
+        <input
+          id="search-box"
+          onChange={handleChange}
+          value={search}
+          placeholder="pikachu"
+        />
         <label htmlFor="search-type">Type</label>
         <select
           name="search-type"
