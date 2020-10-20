@@ -12,7 +12,7 @@ export default function PokemonCard({
   pokedexNum,
 }) {
   return (
-    <div className="pokemon-card" key={id}>
+    <div className="pokemon-card" id={id}>
       <img className="pokemon-img" src={imgURL} alt={name}></img>
       {/* <PokemonCardInfo
         name={name}

@@ -97,7 +97,8 @@ export default function PokemonCardWrapper({ pokemonQuery }) {
 
   if (status === "idle")
     return <div style={{ textAlign: "center" }}>Please search a pokemon</div>;
-  if (status === "pending") return <Loading />;
+  if (status === "pending")
+    return <div style={{ textAlign: "center" }}>Catching Pokemon...</div>;
   if (status === "rejected")
     return (
       <div role="alert" style={{ textAlign: "center" }}>
@@ -121,8 +122,9 @@ export default function PokemonCardWrapper({ pokemonQuery }) {
                   hp={card.hp}
                   attacks={card.attacks}
                   imgURL={card.imageUrlHiRes}
-                  id={card.id}
                   pokedexNum={card.nationalPokedexNumber}
+                  key={card.id}
+                  id={card.id}
                 />
               ))
             : null}
