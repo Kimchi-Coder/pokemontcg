@@ -120,7 +120,7 @@ export default function PokemonCardWrapper({ pokemonQuery }) {
                   types={card.types}
                   hp={card.hp}
                   attacks={card.attacks}
-                  imgURL={card.imageUrl}
+                  imgURL={card.imageUrlHiRes}
                   key={card.id}
                   id={card.id}
                   pokedexNum={card.nationalPokedexNumber}
