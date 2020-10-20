@@ -7,9 +7,7 @@ export default function SearchedPokemon({ onSelect }) {
   const [searchHistory, setSearchHistory] = useState([]);
 
   useEffect(() => {
-    let keys = [];
-    Object.keys(cache).forEach((key) => keys.push(key));
-    setSearchHistory([...keys]);
+    setSearchHistory(Object.keys(cache));
   }, [cache]);
 
   return (
