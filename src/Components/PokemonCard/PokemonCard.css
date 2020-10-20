@@ -11,8 +11,10 @@
   border-radius: 10px;
 }
 
+/* Redundant max height/width bc Chrome renders dif from Firefox */
 img {
-  height: auto;
+  max-height: 300px;
+  max-width: 200px;
   align-self: center;
 }
 
@@ -24,6 +26,6 @@ img {
 
 .pokemon-card-wrapper img:active {
   filter: blur(0px);
-  transform: scale(1.5);
+  transform: scale(1.75);
   opacity: 1;
 }
