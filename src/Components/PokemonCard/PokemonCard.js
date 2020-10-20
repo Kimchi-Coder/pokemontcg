@@ -19,7 +19,7 @@ export default function PokemonCard({
         types={types}
         hp={hp}
         attacks={attacks}
-        od={id}
+        id={id}
         pokedexNum={pokedexNum}
       /> */}
     </div>
