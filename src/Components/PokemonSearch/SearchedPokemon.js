@@ -15,34 +15,30 @@ export default function SearchedPokemon({ onSelect }) {
       <div className="searched-pokemon-wrapper">
         {searchHistory.length <= 10
           ? searchHistory.map((name) => (
-              <button
-                style={{
-                  minWidth: `${name.length}ch`,
-                  maxWidth: `${name.length + 3}ch`,
-                  margin: "5px",
-                }}
-                key={name}
-                className="searched-pokemon"
-                onClick={() => onSelect(name)}
-              >
-                {name}
-              </button>
+              <SearchedButton name={name} onSelect={onSelect} />
             ))
-          : searchHistory.slice(-10).map((name) => (
-              <button
-                style={{
-                  minWidth: `${name.length}ch`,
-                  maxWidth: `${name.length + 3}ch`,
-                  margin: "5px",
-                }}
-                key={name}
-                className="searched-pokemon"
-                onClick={() => onSelect(name)}
-              >
-                {name}
-              </button>
-            ))}
+          : searchHistory
+              .slice(-10)
+              .map((name) => (
+                <SearchedButton name={name} onSelect={onSelect} />
+              ))}
       </div>
     </div>
   );
 }
+const SearchedButton = ({ name, onSelect }) => {
+  return (
+    <button
+      style={{
+        minWidth: `${name.length}ch`,
+        maxWidth: `${name.length + 3}ch`,
+        margin: "5px",
+      }}
+      key={name}
+      className="searched-pokemon"
+      onClick={() => onSelect(name)}
+    >
+      {name}
+    </button>
+  );
+};
