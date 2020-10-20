@@ -14,13 +14,17 @@ export default function SearchedPokemon({ onSelect }) {
     <div className="searched-pokemon-header">
       <div className="searched-pokemon-wrapper">
         {searchHistory.length <= 10
-          ? searchHistory.map((name) => (
-              <SearchedButton name={name} onSelect={onSelect} />
+          ? searchHistory.map((name, i) => (
+              <SearchedButton key={name + i} name={name} onSelect={onSelect} />
             ))
           : searchHistory
               .slice(-10)
-              .map((name) => (
-                <SearchedButton name={name} onSelect={onSelect} />
+              .map((name, i) => (
+                <SearchedButton
+                  key={name + i}
+                  name={name}
+                  onSelect={onSelect}
+                />
               ))}
       </div>
     </div>
