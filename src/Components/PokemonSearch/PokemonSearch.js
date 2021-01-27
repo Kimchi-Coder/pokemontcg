@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./PokemonSearch.css";
 import { useHistory, Link } from "react-router-dom";
 import { ReactComponent as PokeballSVG } from "../../assets/pokeball.svg";
@@ -66,6 +66,16 @@ export default function PokemonSearch({
   ].sort((a, b) => a > b);
 
   const history = useHistory();
+
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (!inputRef.current) {
+      return;
+    }
+    inputRef.current.focus();
+  }, []);
+
   return (
     <>
       <form className="pokemon-search" onSubmit={handleSubmit}>
@@ -77,7 +87,7 @@ export default function PokemonSearch({
           onChange={handleChange}
           value={search}
           placeholder="Search for a pokemon!"
-          autoFocus
+          ref={inputRef}
         />
         <label htmlFor="search-type">Type</label>
         <select
