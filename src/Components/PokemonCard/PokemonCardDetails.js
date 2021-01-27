@@ -1,15 +1,10 @@
 import React from "react";
 
-export default function PokemonCardInfo({
-  name,
-  types,
-  hp,
-  attacks,
-  id,
-  pokedexNum,
-}) {
+export default function PokemonCardDetails({ selected }) {
+  const { name, types, hp, attacks, id, pokedexNum, imageUrlHiRes } = selected;
   return (
     <>
+      <img src={imageUrlHiRes} alt={`Pokemon card: ${name}`}></img>
       <div className="pokemon-name">
         <strong>Name: </strong>
         {name}
@@ -21,7 +16,9 @@ export default function PokemonCardInfo({
       </div>
       <ul>
         <strong>Types: </strong>
-        {types ? types.map((type) => <li key={id + type}>{type}</li>) : "none"}
+        {types
+          ? types.forEach((type) => <li key={id + type}>{type}</li>)
+          : "none"}
       </ul>
       <ul className="pokemon-attacks">
         {attacks
@@ -30,10 +27,11 @@ export default function PokemonCardInfo({
                 <p>
                   <strong>Attack Name:</strong> {attack.name}
                 </p>{" "}
-                <p>
-                  <strong>Text: </strong>
-                  {attack.text}
-                </p>{" "}
+                {attack.text && (
+                  <p>
+                    <strong>Text: </strong> <span>{attack.text}</span>
+                  </p>
+                )}
                 {attack.damage ? (
                   <p>
                     <strong>Dmg: </strong> {attack.damage}

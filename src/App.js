@@ -6,9 +6,11 @@ import { PokemonCacheProvider } from "./Hooks/usePokemonCache";
 import SearchedPokemon from "./Components/PokemonSearch/SearchedPokemon";
 import PokemonSearchLanding from "./Components/PokemonSearch/PokemonSearchLanding";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import PokemonCard from "./Components/PokemonCard/PokemonCard";
 
 import "./App.css";
 import LandingPage from "./Components/LandingPage/LandingPage";
+import PokemonCardDetails from "./Components/PokemonCard/PokemonCardDetails";
 
 function ErrorFallBack({ error, resetErrorBoundary }) {
   return (
@@ -24,6 +26,7 @@ const initialState = { name: "", type: "", series: "" };
 function App() {
   const [search, setSearch] = useState("");
   const [pokemonQuery, setPokemonQuery] = useState(initialState);
+  const [selected, setSelected] = useState({});
 
   const handleReset = () => {
     setSearch("");
@@ -35,10 +38,10 @@ function App() {
   };
 
   return (
-    <Router>
-      <Switch>
-        <Route path="/search">
-          <PokemonCacheProvider>
+    <PokemonCacheProvider>
+      <Router>
+        <Switch>
+          <Route path="/search">
             <PokemonSearch
               search={search}
               setSearch={setSearch}
@@ -51,12 +54,22 @@ function App() {
               onReset={handleReset}
               resetKeys={[pokemonQuery]}
             >
-              <PokemonCardWrapper pokemonQuery={pokemonQuery} />
+              <PokemonCardWrapper
+                setSelected={setSelected}
+                pokemonQuery={pokemonQuery}
+              />
             </ErrorBoundary>
-          </PokemonCacheProvider>
-        </Route>
-        <Route path="/">
-          <PokemonCacheProvider>
+          </Route>
+          <Route path="/card/:set/:num" children={<PokemonCard />}>
+            <PokemonSearch
+              search={search}
+              setSearch={setSearch}
+              setPokemonQuery={setPokemonQuery}
+              searchedPokemon={<SearchedPokemon onSelect={handleSelect} />}
+            />
+            <PokemonCardDetails selected={selected} />
+          </Route>
+          <Route exact path="/">
             <LandingPage>
               <PokemonSearchLanding
                 search={search}
@@ -64,10 +77,10 @@ function App() {
                 setPokemonQuery={setPokemonQuery}
               />
             </LandingPage>
-          </PokemonCacheProvider>
-        </Route>
-      </Switch>
-    </Router>
+          </Route>
+        </Switch>
+      </Router>
+    </PokemonCacheProvider>
   );
 }
 

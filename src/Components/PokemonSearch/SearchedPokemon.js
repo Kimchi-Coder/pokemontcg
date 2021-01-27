@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { usePokemonCache } from "../../Hooks/usePokemonCache";
+import { Link } from "react-router-dom";
 import "./SearchedPokemon.css";
 
 export default function SearchedPokemon({ onSelect }) {
@@ -32,17 +33,19 @@ export default function SearchedPokemon({ onSelect }) {
 }
 const SearchedButton = ({ name, onSelect }) => {
   return (
-    <button
-      style={{
-        minWidth: `${name.length}ch`,
-        maxWidth: `${name.length + 3}ch`,
-        margin: "5px",
-      }}
-      key={name}
-      className="searched-pokemon"
-      onClick={() => onSelect(name)}
-    >
-      {name}
-    </button>
+    <Link to="/search">
+      <button
+        style={{
+          minWidth: `${name.length}ch`,
+          maxWidth: `${name.length + 3}ch`,
+          margin: "5px",
+        }}
+        key={name}
+        className="searched-pokemon"
+        onClick={() => onSelect(name)}
+      >
+        {name}
+      </button>
+    </Link>
   );
 };
