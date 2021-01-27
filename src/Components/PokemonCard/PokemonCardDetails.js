@@ -12,7 +12,15 @@ export default function PokemonCardDetails({ selected, setSelected }) {
         .then((result) => setSelected(result.card));
     }
   }, [set, num, setSelected, selected.card]);
-  const { name, types, hp, attacks, id, pokedexNum, imageUrlHiRes } = selected;
+  const {
+    name,
+    types,
+    hp,
+    attacks,
+    id,
+    nationalPokedexNumber,
+    imageUrlHiRes,
+  } = selected;
   return (
     <>
       <img
@@ -23,7 +31,7 @@ export default function PokemonCardDetails({ selected, setSelected }) {
       <div className="pokemon-name">
         <strong>Name: </strong>
         {name}
-        <pre>Pokedex #: {pokedexNum}</pre>
+        <pre>Pokedex #: {nationalPokedexNumber}</pre>
       </div>
       <div className="pokemon-hp">
         <strong>HP: </strong>
@@ -38,7 +46,7 @@ export default function PokemonCardDetails({ selected, setSelected }) {
       <ul className="pokemon-attacks">
         {attacks
           ? attacks.map((attack) => (
-              <li key={id + "" + name}>
+              <li key={id + "" + attack.name}>
                 <p>
                   <strong>Attack Name:</strong> {attack.name}
                 </p>{" "}

@@ -67,6 +67,7 @@ function App() {
               setPokemonQuery={setPokemonQuery}
               searchedPokemon={<SearchedPokemon onSelect={handleSelect} />}
             />
+
             <PokemonCardDetails selected={selected} setSelected={setSelected} />
           </Route>
           <Route exact path="/">

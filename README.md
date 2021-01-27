@@ -20,4 +20,9 @@ Built using create-react-app and the [Pokemon TCG API](https://pokemontcg.io)
 
 ## To-do:
 
-1. Fix routing: entering specific /card/set/num route doesn't fetch
+[x]Fix routing: entering specific /card/set/num route doesn't fetch
+[] Fix out of range errors for routes
+[] Add users
+[] Add collections
+[] Add graph of pokemon card power
+[] Add pricing api for individual cards

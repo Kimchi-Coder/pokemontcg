@@ -17,8 +17,8 @@ img {
   max-width: 200px;
   align-self: center;
 }
-
-/* CSS hover-zoom effect way too slow and janky */
+/* 
+CSS hover-zoom effect way too slow and janky
 .pokemon-card-wrapper:active img {
   filter: blur(20px);
   opacity: 0.5;
@@ -28,4 +28,4 @@ img {
   filter: blur(0px);
   transform: scale(1.75);
   opacity: 1;
-}
+} */
