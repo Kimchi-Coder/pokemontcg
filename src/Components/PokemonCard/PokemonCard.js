@@ -1,6 +1,5 @@
 import React from "react";
 import "./PokemonCard.css";
-import PokemonCardInfo from "./PokemonCardInfo";
 
 export default function PokemonCard({
   imgURL,
@@ -10,18 +9,12 @@ export default function PokemonCard({
   attacks,
   id,
   pokedexNum,
+  setSelected,
+  card,
 }) {
   return (
-    <div className="pokemon-card" id={id}>
+    <div className="pokemon-card" id={id} onClick={() => setSelected(card)}>
       <img className="pokemon-img" src={imgURL} alt={name}></img>
-      {/* <PokemonCardInfo
-        name={name}
-        types={types}
-        hp={hp}
-        attacks={attacks}
-        id={id}
-        pokedexNum={pokedexNum}
-      /> */}
     </div>
   );
 }

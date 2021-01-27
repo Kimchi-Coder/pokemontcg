@@ -1,4 +1,5 @@
 import React, { useReducer, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { usePokemonCache } from "../../Hooks/usePokemonCache";
 import PokemonCard from "./PokemonCard";
 import "./PokemonCardWrapper.css";
@@ -29,7 +30,7 @@ const asyncReducer = (state, action) => {
 };
 
 // Add other search criteria. Perhaps make obj with all criteria {pokemonName:'pikachu', pokemonType: 'electric'...}
-export default function PokemonCardWrapper({ pokemonQuery }) {
+export default function PokemonCardWrapper({ pokemonQuery, setSelected }) {
   const [state, dispatch] = useReducer(asyncReducer, {
     status: "idle",
     pokemon: null,
@@ -116,16 +117,22 @@ export default function PokemonCardWrapper({ pokemonQuery }) {
         <div className="pokemon-card-wrapper">
           {filteredCards
             ? filteredCards.map((card) => (
-                <PokemonCard
-                  name={card.name}
-                  types={card.types}
-                  hp={card.hp}
-                  attacks={card.attacks}
-                  imgURL={card.imageUrlHiRes}
-                  pokedexNum={card.nationalPokedexNumber}
-                  key={card.id}
-                  id={card.id}
-                />
+                <Link to={`/card/${card.setCode}/${card.number}`}>
+                  <PokemonCard
+                    name={card.name}
+                    types={card.types}
+                    hp={card.hp}
+                    attacks={card.attacks}
+                    imgURL={card.imageUrlHiRes}
+                    pokedexNum={card.nationalPokedexNumber}
+                    key={card.id}
+                    id={card.id}
+                    num={card.number}
+                    set={card.setCode}
+                    setSelected={setSelected}
+                    card={card}
+                  />
+                </Link>
               ))
             : null}
         </div>
