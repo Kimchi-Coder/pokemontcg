@@ -17,3 +17,7 @@ Built using create-react-app and the [Pokemon TCG API](https://pokemontcg.io)
 2.  Caching search results to improve performance and prevent unnecessary requests to API
 3.  OAuth
 4.  Better project structure and scoping of components and css. (Still need to improve classNames)
+
+## To-do:
+
+1. Fix routing: entering specific /card/set/num route doesn't fetch

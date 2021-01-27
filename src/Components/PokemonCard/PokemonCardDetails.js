@@ -1,10 +1,18 @@
 import React from "react";
+import "./PokemonCardDetails.css";
+import { useParams } from "react-router-dom";
 
-export default function PokemonCardDetails({ selected }) {
+export default function PokemonCardDetails({ selected, setSelected }) {
+  const { set, num } = useParams();
+
   const { name, types, hp, attacks, id, pokedexNum, imageUrlHiRes } = selected;
   return (
     <>
-      <img src={imageUrlHiRes} alt={`Pokemon card: ${name}`}></img>
+      <img
+        className="details-img"
+        src={imageUrlHiRes}
+        alt={`Pokemon card: ${name}`}
+      ></img>
       <div className="pokemon-name">
         <strong>Name: </strong>
         {name}

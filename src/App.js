@@ -26,7 +26,7 @@ const initialState = { name: "", type: "", series: "" };
 function App() {
   const [search, setSearch] = useState("");
   const [pokemonQuery, setPokemonQuery] = useState(initialState);
-  const [selected, setSelected] = useState({});
+  const [selected, setSelected] = useState(null);
 
   const handleReset = () => {
     setSearch("");
@@ -67,7 +67,7 @@ function App() {
               setPokemonQuery={setPokemonQuery}
               searchedPokemon={<SearchedPokemon onSelect={handleSelect} />}
             />
-            <PokemonCardDetails selected={selected} />
+            <PokemonCardDetails selected={selected} setSelected={setSelected} />
           </Route>
           <Route exact path="/">
             <LandingPage>
