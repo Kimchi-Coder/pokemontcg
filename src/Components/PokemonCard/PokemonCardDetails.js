@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./PokemonCardDetails.css";
 import { useParams } from "react-router-dom";
 
 export default function PokemonCardDetails({ selected, setSelected }) {
   const { set, num } = useParams();
 
+  useEffect(() => {
+    if (!selected.card) {
+      fetch(`https://api.pokemontcg.io/v1/cards/${set}-${num}`)
+        .then((data) => data.json())
+        .then((result) => setSelected(result.card));
+    }
+  }, [set, num, setSelected, selected.card]);
   const { name, types, hp, attacks, id, pokedexNum, imageUrlHiRes } = selected;
   return (
     <>
