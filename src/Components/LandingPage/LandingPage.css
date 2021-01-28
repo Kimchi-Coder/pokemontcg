@@ -5,7 +5,32 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(rgb(1, 80, 82), rgb(0, 150, 152));
   color: white;
   font-size: 1.5rem;
+}
+
+.pokeball-red {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100vw;
+  height: 45vh;
+  background-color: red;
+}
+
+.pokeball-black {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 10vh;
+  background-color: black;
+}
+
+.pokeball-white {
+  width: 100vw;
+  height: 45vh;
+  background-color: white;
 }

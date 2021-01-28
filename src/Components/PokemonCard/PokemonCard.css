@@ -17,6 +17,12 @@ img {
   max-width: 200px;
   align-self: center;
 }
+
+.pokemon-card:hover {
+  transform: scale(1.15);
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
 /* 
 CSS hover-zoom effect way too slow and janky
 .pokemon-card-wrapper:active img {
