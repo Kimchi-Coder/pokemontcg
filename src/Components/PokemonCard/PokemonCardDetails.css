@@ -38,6 +38,11 @@
   justify-content: space-between;
 }
 
+.type {
+  display: flex;
+  align-items: center;
+}
+
 @media screen and (max-width: 630px) {
   .img-wrapper {
     left: 0;

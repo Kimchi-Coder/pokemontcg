@@ -22,6 +22,9 @@ export default function PokemonCardDetails({ selected, setSelected }) {
     imageUrlHiRes,
     subtype,
     set: series,
+    rarity,
+    ability,
+    artist: illustrator,
   } = selected;
   return (
     <>
@@ -46,11 +49,34 @@ export default function PokemonCardDetails({ selected, setSelected }) {
           <div className="pokedex-num">Pokedex #: {nationalPokedexNumber}</div>
           <div className="subtype">Subtype: {subtype}</div>
           <div className="set">Set: {series}</div>
-          <ul>
+          {rarity ? <div className="rarity">Rarity: {rarity}</div> : null}
+
+          <ul className="type">
             <strong>Type: </strong>
             {types
-              ? types.map((type) => <li key={id + type}>{type}</li>)
+              ? types.map((type) => (
+                  <li key={id + type}>
+                    <img
+                      src={require(`../../assets/svg/types/${type.toLowerCase()}.svg`)}
+                      alt={type}
+                    ></img>
+                  </li>
+                ))
               : "none"}
+          </ul>
+          <ul className="pokemon-ability">
+            {ability ? (
+              <li key={id + "" + ability.name}>
+                <p>
+                  <strong>Ability: </strong> {ability.name}
+                </p>{" "}
+                {ability.text && (
+                  <p>
+                    <strong>Text: </strong> <span>{ability.text}</span>
+                  </p>
+                )}
+              </li>
+            ) : null}
           </ul>
           <ul className="pokemon-attacks">
             {attacks
@@ -73,6 +99,7 @@ export default function PokemonCardDetails({ selected, setSelected }) {
                 ))
               : null}
           </ul>
+          <div className="illustrator">Illustrator: {illustrator}</div>
         </div>
       </div>
     </>

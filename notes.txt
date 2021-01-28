@@ -1,1 +1,12 @@
 Check API if limited to 100 results / GET
+
+Pokemon stats:
+* most hp = 320
+* highest dmg / atk = 300
+* highest dmg / energy
+* utility (abilities)
+
+
+API uses 'lightning' instead of 'electric' for type... Have to manipulate this into 'electric'
+API uses 'colorless' as a pokemon type because that card uses colorless resources.  must fix this
+Could fix both these issues by making classNames for types and making custom css
