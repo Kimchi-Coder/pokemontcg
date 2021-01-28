@@ -20,50 +20,61 @@ export default function PokemonCardDetails({ selected, setSelected }) {
     id,
     nationalPokedexNumber,
     imageUrlHiRes,
+    subtype,
+    set: series,
   } = selected;
   return (
     <>
-      <img
-        className="details-img"
-        src={imageUrlHiRes}
-        alt={`Pokemon card: ${name}`}
-      ></img>
-      <div className="pokemon-name">
-        <strong>Name: </strong>
-        {name}
-        <pre>Pokedex #: {nationalPokedexNumber}</pre>
+      <div className="details-wrapper">
+        <div className="img-wrapper">
+          <img
+            className="details-img"
+            src={imageUrlHiRes}
+            alt={`Pokemon card: ${name}`}
+          ></img>
+        </div>
+        <div className="text-wrapper">
+          <div className="name-hp-wrapper">
+            <div className="pokemon-name">
+              <h1>{name}</h1>
+            </div>
+            <div className="pokemon-hp">
+              <strong>HP: </strong>
+              {hp}
+            </div>
+          </div>
+          <div className="pokedex-num">Pokedex #: {nationalPokedexNumber}</div>
+          <div className="subtype">Subtype: {subtype}</div>
+          <div className="set">Set: {series}</div>
+          <ul>
+            <strong>Type: </strong>
+            {types
+              ? types.map((type) => <li key={id + type}>{type}</li>)
+              : "none"}
+          </ul>
+          <ul className="pokemon-attacks">
+            {attacks
+              ? attacks.map((attack) => (
+                  <li key={id + "" + attack.name}>
+                    <p>
+                      <strong>Attack Name:</strong> {attack.name}
+                    </p>{" "}
+                    {attack.text && (
+                      <p>
+                        <strong>Text: </strong> <span>{attack.text}</span>
+                      </p>
+                    )}
+                    {attack.damage ? (
+                      <p>
+                        <strong>Dmg: </strong> {attack.damage}
+                      </p>
+                    ) : null}
+                  </li>
+                ))
+              : null}
+          </ul>
+        </div>
       </div>
-      <div className="pokemon-hp">
-        <strong>HP: </strong>
-        {hp}
-      </div>
-      <ul>
-        <strong>Types: </strong>
-        {types
-          ? types.forEach((type) => <li key={id + type}>{type}</li>)
-          : "none"}
-      </ul>
-      <ul className="pokemon-attacks">
-        {attacks
-          ? attacks.map((attack) => (
-              <li key={id + "" + attack.name}>
-                <p>
-                  <strong>Attack Name:</strong> {attack.name}
-                </p>{" "}
-                {attack.text && (
-                  <p>
-                    <strong>Text: </strong> <span>{attack.text}</span>
-                  </p>
-                )}
-                {attack.damage ? (
-                  <p>
-                    <strong>Dmg: </strong> {attack.damage}
-                  </p>
-                ) : null}
-              </li>
-            ))
-          : null}
-      </ul>
     </>
   );
 }
