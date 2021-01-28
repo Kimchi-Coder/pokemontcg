@@ -35,3 +35,5 @@ Built using create-react-app and the [Pokemon TCG API](https://pokemontcg.io)
 [ ] Add a sets view
 
 [ ] Change Search filters to searched card filters and add search filters allowing a search without a name and only type/series
+
+[ ] Add links to (d)evolved forms (bulbasur <-> ivysaur <-> venasaur)
